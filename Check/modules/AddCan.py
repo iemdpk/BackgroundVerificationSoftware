@@ -1,7 +1,12 @@
 import streamlit as st
+from pymongo import MongoClient
+
 
 
 def AddCandidate():
+
+    client = MongoClient("mongodb+srv://iemdpk:Imback2play@localserver.cwqbg.mongodb.net",tls=True,tlsAllowInvalidCertificates=True)
+    db = client["BGC"] 
     
     with st.form("add_candidate"):
         st.write("Add Candidate")    
@@ -18,16 +23,27 @@ def AddCandidate():
         bgv_address = st.text_area("Address")
         gender = st.selectbox("Select Gender",["Male","Female"])
         options = ["Address", "Aadhar", "PAN","Employment","Educational","Court","Reference","Global Database","CIBIL"]
-        st.multiselect("Please Select the BGV AREA",options=options)
+        bgv = st.multiselect("Please Select the BGV AREA",options=options)
         
         submitted = st.form_submit_button("Add Candidate")
 
         if submitted:
 
-            st.write("Candidate added successfully!")
-            st.write(f"Candidate Name: {candidate_name}")
-            st.write(f"Candidate Email: {candidate_email}")
-            st.write(f"Candidate Phone: {candidate_phone}")
-            st.write(f"BGV PAN Number: {bgv_pan_number}")
-            st.write(f"BGV Aadhaar Number: {bgv_aadhaar_number}")
-            st.write(f"BGV Address: {bgv_address}")
+            t1 = { 
+                "emp_code":emp_code, 
+                "entity_code":entity_code, 
+                "candidate_name":candidate_name, 
+                "candidate_email":candidate_email, 
+                "candidate_phone":candidate_phone, 
+                "father_name":father_name, 
+                "dob":str(dob), 
+                "bgv_pan_number":bgv_pan_number, 
+                "bgv_aadhaar_number":bgv_aadhaar_number, 
+                "bgv_address":bgv_address, 
+                "gender":gender,
+                "bgv":bgv, 
+            }
+            a = db["authentication"].insert_one(t1)
+            if a :
+                st.success("Candidate Entery Successfull")
+            

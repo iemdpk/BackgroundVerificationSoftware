@@ -8,7 +8,7 @@ css = """
     border: none !important;
 }
 """
-page1 = "AddCandidate";
+page1 = "Candidate";
 
 st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
