@@ -25,7 +25,6 @@ pandas==2.2.2
 pillow==10.4.0
 protobuf==5.28.0
 pyarrow==17.0.0
-PyAutoGUI==0.9.54
 pydeck==0.9.1
 PyGetWindow==0.0.9
 Pygments==2.18.0
