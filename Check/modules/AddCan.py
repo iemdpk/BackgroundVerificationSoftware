@@ -1,6 +1,6 @@
 import streamlit as st
 from pymongo import MongoClient
-from sendEmail import sendEmail
+# from sendEmail import sendEmail
 
 
 def AddCandidate():
@@ -45,6 +45,6 @@ def AddCandidate():
             }
             a = db["authentication"].insert_one(t1)
             if a :
-                sendEmail(candidate_email,bgv)
+                # sendEmail(candidate_email,bgv)
                 st.success("Candidate Entery Successfull")
             
