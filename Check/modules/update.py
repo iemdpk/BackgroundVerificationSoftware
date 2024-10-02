@@ -8,9 +8,6 @@ def update():
     a = db["authentication"].find_one({"emp_code":"02"})
     # a = db.find_one({emp_code:"EMP-01"})
     st.title( "upload your Documents here "+a["candidate_name"]);
-    
-    
 
-     
-    
+    st.title("This is WOrking")
     
