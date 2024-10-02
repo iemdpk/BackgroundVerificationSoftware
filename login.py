@@ -1,6 +1,6 @@
 import streamlit as st
 import time
-import pyautogui
+# import pyautogui
 # st.stop() 
 
 def Login():
@@ -21,7 +21,7 @@ def Login():
                     print(username);
                     st.session_state.page = "Dashboard";
                     time.sleep(2)
-                    pyautogui.press('enter')
+                    # pyautogui.press('enter')
                 
                 
             else:
